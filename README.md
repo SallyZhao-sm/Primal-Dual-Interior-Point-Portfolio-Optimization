@@ -1,27 +1,33 @@
-# MIE1621---Interior Point Method for Portfolio Optimization
-Implemented a Predictor-Corrector Primal-Dual Interior Point Method to solve portfolio optimization as a convex quadratic program. Compared results with MATLAB quadprog/Python CVXPY. Demonstrated numerical stability on small cases with near-degenerate covariance and scalability to large dimensions (up to n=2000).
+# Primal-Dual Interior-Point Portfolio Optimization
 
-This project implements a Predictor-Corrector Primal-Dual Interior Point Method (IPM) to solve portfolio optimization formulated as a convex quadratic program. The algorithm was tested on both small and large-scale cases and compared with MATLAB `quadprog` and Python CVXPY solvers.
+## Overview
 
-## Problem Setup
-- Portfolio optimization with:
-  - Risk aversion parameter (δ in [3.5, 4.5])
-  - Non-negativity and budget constraints
-- Objective: minimize risk-adjusted variance while meeting investment constraints
+This project implements a predictor-corrector primal-dual interior-point method to solve portfolio optimization as a convex quadratic program. The custom solver is tested for numerical stability and scalability, then benchmarked against MATLAB `quadprog` and Python CVXPY.
 
-## Methods
-- Part 1: Implemented IPM on a 3-asset portfolio with near-degenerate covariance to test numerical stability
-- Part 2: Extended to larger portfolios (n = 5, 10, 20, 50, 100, 1000, 2000) with positive definite covariance matrices
-- Benchmarked results against MATLAB `quadprog` and Python `cvxpy`
+## Problem Formulation
 
-## Results
-- Small-scale test: IPM and `quadprog` achieved close objective values, though solutions differed due to nearly singular covariance
-- Large-scale test: IPM scaled efficiently and produced consistent solutions across all problem sizes
-- Demonstrated robustness, accuracy, and computational efficiency for convex QP in financial optimization
+The portfolio model includes:
 
-## Skills Demonstrated
-- Convex optimization and quadratic programming
-- Implementation of advanced numerical algorithms (Predictor-Corrector IPM)
-- Financial applications of optimization in portfolio selection
-- Cross-validation using multiple solvers (MATLAB, Python)
+- A risk-aversion parameter between 3.5 and 4.5
+- Nonnegative portfolio weights
+- A full-investment budget constraint
+- A risk-adjusted quadratic objective
 
+## Methodology
+
+- Implemented the predictor-corrector primal-dual algorithm
+- Tested a three-asset case with a nearly singular covariance matrix
+- Extended the solver to dimensions of 5, 10, 20, 50, 100, 1,000, and 2,000 assets
+- Generated positive-definite covariance matrices for large-scale tests
+- Compared objective values and solutions with `quadprog` and CVXPY
+
+## Key Results
+
+- The custom solver and `quadprog` produced close objective values in the small, nearly degenerate case.
+- Different allocations in the small case illustrated the sensitivity created by a nearly singular covariance matrix.
+- The implementation produced consistent solutions across problem sizes up to 2,000 assets.
+- Benchmarking validated the accuracy and scalability of the numerical method.
+
+## Technologies
+
+Python, MATLAB, NumPy, CVXPY, quadratic programming, convex optimization, numerical algorithms
